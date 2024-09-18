@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "name": "kernel debug",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/dmanage.py",
+            "args": [
+                "runserver",
+                "0.0.0.0:8000"
+            ],
+            "django": true
+        }
+    ]
+}

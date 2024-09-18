@@ -1,0 +1,32 @@
+{
+	"name": "kernel",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "kernel",
+	"workspaceFolder": "/workspace",
+
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"files.trimTrailingWhitespace": true,
+		"files.insertFinalNewline": true,
+		"files.trimFinalNewlines": true
+	},
+
+	"extensions": [
+		"ms-python.python",
+		"visualstudioexptteam.vscodeintellicode",
+		"donjayamanne.githistory",
+        "batisteo.vscode-django",
+        "cweijan.vscode-mysql-client2",
+		"ms-vsliveshare.vsliveshare",
+        "phind.phind",
+        "kaih2o.python-resource-monitor",
+        "oderwat.indent-rainbow",
+        "KevinRose.vsc-python-indent",
+		"ms-python.flake8",
+        "nicolas-liger.dbml-viewer",
+        "matt-meyers.vscode-dbml",
+	],
+
+	"forwardPorts": [5000],
+	"remoteUser": "vscode"
+}
