@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     # LIBS:
     'graphene_django',
     'corsheaders',
+    ''
 
     # APPS:
     'events',
@@ -133,6 +134,7 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
 
 
 LOGIN_TIMEOUT = 180

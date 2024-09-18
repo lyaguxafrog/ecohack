@@ -92,6 +92,7 @@ def check_auth_phone(
 
     reqq = reqq_.json()
     if reqq.get('status') == 'accepted':
+        cache.delete(f'user{phone}')
         return True
     else:
         return False

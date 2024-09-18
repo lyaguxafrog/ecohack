@@ -8,6 +8,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.views.generic import TemplateView
+from graphql_jwt.decorators import jwt_cookie
 
 
 urlpatterns = [
