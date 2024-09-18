@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     # LIBS:
     'graphene_django',
     'corsheaders',
+    ''
 
     # APPS:
     'events',
@@ -35,6 +36,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -65,6 +67,16 @@ DATABASES = {
         'USER': os.getenv('DB_USER', "developer"),
         'PASSWORD': os.getenv('DB_PASSWORD', "password"),
         'HOST': os.getenv("DB_HOST", 'db')
+    }
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': f'redis://{os.getenv('REDIS_HOST', 'redis')}:6379/0',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
     }
 }
 
@@ -105,8 +117,16 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 GRAPHENE = {
-    "SCHEMA": "config.schema.schema"
+    "SCHEMA": "config.schema.schema",
+    "MIDDLEWARE": [
+        "graphql_jwt.middleware.JSONWebTokenMiddleware",
+    ],
 }
+
+AUTHENTICATION_BACKENDS = [
+    "graphql_jwt.backends.JSONWebTokenBackend",
+    "django.contrib.auth.backends.ModelBackend",
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -114,3 +134,7 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+
+
+LOGIN_TIMEOUT = 180
