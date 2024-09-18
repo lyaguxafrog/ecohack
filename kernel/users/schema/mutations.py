@@ -51,12 +51,10 @@ class RegisterUserMutation(relay.ClientIDMutation):
         return RegisterUserMutation(phone_to_call=phone_to_call)
 
 
-
 class CheckAuthMutation(graphene.Mutation):
 
     class Arguments:
         phone = graphene.String()
-
 
     def mutate(self, info, phone):
         pass

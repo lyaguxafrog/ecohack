@@ -23,7 +23,6 @@ class Events(models.Model):
     )
     rating = models.FloatField(
         verbose_name=_("Рейтинг"),
-        max_length=5.0,
         null=True
     )
     date = models.DateTimeField(

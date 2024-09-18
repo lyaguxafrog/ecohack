@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from .schema import Query
+from .schema import Query, Mutations

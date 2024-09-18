@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from typing import Optional
+from datetime import datetime
 
 from django.db.transaction import atomic
 from django.db.models import QuerySet
@@ -12,6 +13,7 @@ from events.models import Events
 @atomic
 def create_event(
     title: str,
+    date: Optional[datetime] = None,
     description: Optional[str] = None,
     longtitude: Optional[str] = None,
     latitude: Optional[str] = None
@@ -31,7 +33,8 @@ def create_event(
             title=title,
             description=description,
             longtitude=longtitude,
-            latitude=latitude
+            latitude=latitude,
+            date=date
         )
     except Exception as err:
         raise Exception(err)
@@ -59,7 +62,7 @@ def delete_event(
 
 @atomic
 def edit_event(
-    event: Events,
+    event_id: str,
     *args,
     **kwargs
 ) -> Events:
@@ -67,8 +70,9 @@ def edit_event(
     Сервис для редактирования существующего события
     """
     try:
+        event: Events = Events.objects.get(pk=event_id)
         _kwargs = kwargs.get('kwargs')
-        print('try')
+        print(_kwargs, args)
         for attr_name, value in _kwargs.items():
             print('attr_name= ', attr_name, 'value= ', value)
             setattr(event, attr_name, value)
