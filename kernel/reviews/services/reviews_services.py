@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from typing import Optional
+
+from django.db.models import QuerySet
 from django.db.transaction import atomic
 
 from reviews.models import Reviews
@@ -24,3 +26,9 @@ def create_review(
         raise Exception(err)
 
     return review
+
+
+@atomic
+def get_reviews(event: Events) -> QuerySet:
+
+    return Reviews.objects.filter(event=event).all()

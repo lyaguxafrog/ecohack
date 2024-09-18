@@ -18,7 +18,8 @@ class Events(models.Model):
     )
     description = models.CharField(
         verbose_name=_("Описание"),
-        max_length=1024
+        max_length=1024,
+        null=True
     )
     rating = models.FloatField(
         verbose_name=_("Рейтинг"),

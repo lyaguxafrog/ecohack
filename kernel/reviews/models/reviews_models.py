@@ -15,7 +15,8 @@ class Reviews(models.Model):
 
     description = models.TextField(
         verbose_name=_("Описание отзыва"),
-        max_length=1024
+        max_length=1024,
+        null=True
     )
     rate = models.FloatField(
         verbose_name=_("Оценка события"),
