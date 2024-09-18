@@ -4,3 +4,5 @@ django-filter
 graphene-django
 psycopg2
 gunicorn
+pillow == 10.4.0
+requests == 2.32.2

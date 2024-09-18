@@ -10,6 +10,7 @@ class Profile(models.Model):
     * user: Пользователь auth.User
     * phone: Номер телефона
     * avatar: Аватар пользователя
+    * role: Роль пользователя
     """
 
     user = models.ForeignKey(
@@ -27,6 +28,17 @@ class Profile(models.Model):
     avatar = models.ImageField(
         null=True,
         verbose_name=_("Аватар пользователя")
+    )
+
+    role = models.IntegerField(
+        choices=[
+            (0, 'user'),
+            (1, 'oragizator'),
+            (2, 'depart')
+        ],
+        default=0,
+        verbose_name=_("Роль пользователя"),
+        help_text=_("0 - пользователь, 1 - организатор, 2 - департамент")
     )
 
     def username(self) -> str:
