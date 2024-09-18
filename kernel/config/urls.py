@@ -15,9 +15,9 @@ urlpatterns = [
     path('api/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-urlpatterns += [
-    re_path(r'', 
-        ensure_csrf_cookie(TemplateView.as_view(template_name='index.html')), 
-        name='index',
-    )
-]
+# urlpatterns += [
+#     re_path(r'',
+#         ensure_csrf_cookie(TemplateView.as_view(template_name='index.html')),
+#         name='index',
+#     )
+# ]
