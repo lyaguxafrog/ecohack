@@ -19,7 +19,7 @@ case "$1" in
         config_app
         ;;
     ssl)
-        get_tls)
+        get_tls
         ;;
     *)
     exit 0
