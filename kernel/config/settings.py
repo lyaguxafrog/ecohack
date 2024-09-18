@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # APPS:
-
+    "events"
 ]
 
 MIDDLEWARE = [
@@ -106,6 +106,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 GRAPHENE = {
     "SCHEMA": "config.schema.schema"
 }
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 try:
     from .local_settings import *
