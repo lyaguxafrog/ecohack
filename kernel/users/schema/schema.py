@@ -4,6 +4,7 @@ from graphene import ObjectType
 
 from .mutations import Mutation as UserMutation
 
+
 class Query(
     ObjectType,
 ):
