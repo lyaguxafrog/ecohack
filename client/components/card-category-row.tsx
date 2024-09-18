@@ -5,9 +5,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperType } from 'swiper/types';
 
 import { NavArrowLeft, NavArrowRight } from './icons';
+import EventCard from './card';
 
 import { ICard } from '@/types';
-import EventCard from './card';
 
 interface ICardCategoryRowProps {
   title: string;

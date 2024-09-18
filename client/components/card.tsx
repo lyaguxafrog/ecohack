@@ -1,4 +1,5 @@
 'use client';
+
 import { Card, CardFooter } from '@nextui-org/card';
 import { Chip } from '@nextui-org/chip';
 import { Image } from '@nextui-org/image';
