@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # APPS:
-    'events'
+    'events',
     'users'
 ]
 
