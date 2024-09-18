@@ -44,7 +44,7 @@ def create_event(
 
 @atomic
 def delete_event(
-    event: Events
+    event_id: str
 ) -> bool:
     """
     Сервис для удаления события
@@ -53,6 +53,7 @@ def delete_event(
     """
 
     try:
+        event: Events = Events.objects.get(pk=event_id)
         cache.delete(key='events')
         event.objects.delete()
     except Exception as err:

@@ -5,7 +5,7 @@ from typing import Dict, Any
 import graphene
 from graphene import ObjectType, relay
 
-from events.services import create_event, edit_event
+from events.services import create_event, edit_event, delete_event
 from .nodes import EventTypeNode
 
 
@@ -73,6 +73,24 @@ class EditEventMutation(relay.ClientIDMutation):
         return EditEventMutation(event=event)
 
 
+class DeleteEventMutation(relay.ClientIDMutation):
+    message = graphene.String()
+
+    class Input:
+        event_id = graphene.ID()
+
+    def mutate_and_get_payload(
+        root: Any,
+        info: graphene.ResolveInfo,
+        **input: Dict[str, any]
+    ):
+        try:
+            delete_event(event_id=input['event_id'])
+            message = 'successful delete'
+        except Exception as err:
+            message = 'fail to delete'
+            raise Exception(err)
+        return DeleteEventMutation(message=message)
 
 
 class Mytation(
@@ -80,3 +98,4 @@ class Mytation(
 ):
     create_event = CreateEventsMutation.Field()
     edit_event = EditEventMutation.Field()
+    delete_event = DeleteEventMutation.Field()
