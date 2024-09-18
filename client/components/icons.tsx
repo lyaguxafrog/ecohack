@@ -163,6 +163,35 @@ export const NavArrowLeft = (props: IconSvgProps) => (
   </svg>
 );
 
+export const MapMarker = (props: IconSvgProps) => (
+  <svg fill="none" height={20} width={14} xmlns="http://www.w3.org/2000/svg" {...props}>
+    <mask
+      height={20}
+      id="a"
+      maskUnits="userSpaceOnUse"
+      style={{
+        maskType: 'luminance',
+      }}
+      width={14}
+      x={0}
+      y={0}
+    >
+      <path
+        d="M7 18.5S1 11.5 1 7c0-3.31 2.69-6 6-6s6 2.69 6 6c0 4.5-6 11.5-6 11.5Z"
+        fill="#fff"
+        stroke="#fff"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+      />
+      <path d="M7 9.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" fill="#000" />
+    </mask>
+    <g mask="url(#a)">
+      <path d="M19-2H-5v24h24V-2Z" fill="#000" />
+    </g>
+  </svg>
+);
+
 export const EyeIcon = (props: IconSvgProps) => (
   <svg height="1em" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path

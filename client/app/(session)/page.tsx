@@ -67,7 +67,7 @@ export default function Home() {
             __html: `@import url('https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');`,
           }}
         />
-        <Map />
+        <Map center={[51.51, -0.12]} points={[[51.51, -0.09]]} />
       </div>
     </section>
   );

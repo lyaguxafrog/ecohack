@@ -7,7 +7,7 @@ export const routes = {
 };
 
 export const siteConfig = {
-  name: 'Прогрев экофанатиков',
+  name: 'ECO Moscow',
   description: 'Make beautiful websites regardless of your design experience.',
   navItems: [
     {
