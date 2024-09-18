@@ -13,9 +13,9 @@ export default function EventCard({ img, title }: ICard) {
     <Card
       isFooterBlurred
       isPressable
-      className="w-[397px] h-[300px] col-span-12 sm:col-span-7 justify-center items-center hover:-translate-y-1"
+      className="col-span-12 sm:col-span-7 justify-center items-center hover:-translate-y-1"
     >
-      <Image className="z-0 w-[413px] h-[300px] object-cover" draggable={false} src={img} />
+      <Image className="z-0 object-cover" draggable={false} src={img} />
       <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
         <div className="flex flex-grow gap-2 items-center">
           <div className="flex flex-col gap-1">
