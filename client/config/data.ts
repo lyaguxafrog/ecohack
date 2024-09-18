@@ -71,3 +71,46 @@ export const animals = [
   { label: 'Otter', value: 'otter', description: 'A carnivorous mammal in the subfamily Lutrinae' },
   { label: 'Crocodile', value: 'crocodile', description: 'A large semiaquatic reptile' },
 ];
+
+export const reviewsDataMock = [
+  {
+    id: '1',
+    firstName: 'Kos',
+    lastName: 'Kos',
+    rating: 2,
+    comment: 'This is the review qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    date: '20/20/24',
+  },
+  {
+    id: '2',
+    firstName: 'Kos',
+    lastName: 'Kos',
+    rating: 5,
+    comment: 'This is the review',
+    date: '20/20/25',
+  },
+  {
+    id: '3',
+    firstName: 'Kos',
+    lastName: 'Kos',
+    rating: 3,
+    comment: 'This is the review',
+    date: '20/20/26',
+  },
+  {
+    id: '4',
+    firstName: 'Kos',
+    lastName: 'Kos',
+    rating: 4,
+    comment: 'This is the review',
+    date: '20/20/27',
+  },
+  {
+    id: '5',
+    firstName: 'Kos',
+    lastName: 'Kos',
+    rating: 1,
+    comment: 'This is the review',
+    date: '20/20/28',
+  },
+];
