@@ -29,9 +29,9 @@ class RegisterUserMutation(relay.ClientIDMutation):
 
     class Input:
         phone = graphene.String(required=True)
-        first_name = graphene.String()
-        last_name = graphene.String()
-        date_of_birth = graphene.Date()
+        first_name = graphene.String(required=True)
+        last_name = graphene.String(required=True)
+        date_of_birth = graphene.Date(required=True)
 
     @staticmethod
     def mutate_and_get_payload(
@@ -58,12 +58,31 @@ class RegisterUserMutation(relay.ClientIDMutation):
         return RegisterUserMutation(phone_to_call=phone_to_call)
 
 
+class SignInMutation(relay.ClientIDMutation):
+    phone_to_call = graphene.String()
+
+    class Input:
+        phone = graphene.String(required=True)
+
+
+    @staticmethod
+    def mutate_and_get_payload(
+        root: Any,
+        info: graphene.ResolveInfo,
+        **input: Dict[str, Any]
+    ):
+        phone_to_call = send_request_to_login_bot(phone=input['phone'])
+
+        return SignInMutation(phone_to_call=phone_to_call)
+
+
+
 class CheckAuthMutation(relay.ClientIDMutation):
     profile = graphene.Field(ProfileNode)
     token = graphene.String()
 
     class Input:
-        phone = graphene.String()
+        phone = graphene.String(required=True)
 
     @staticmethod
     def mutate_and_get_payload(
@@ -90,16 +109,6 @@ class CheckAuthMutation(relay.ClientIDMutation):
 
             print(profile.user)
             token = gen_jwt(profile.user)
-            # response = info.context['response']
-            # response.set_cookie(
-            #     key='auth',
-            #     value=token,
-            #     httponly=True,
-            #     secure=False,
-            #     samesite='Lax'
-
-            # )
-
             return CheckAuthMutation(profile=profile, token=token)
 
 
@@ -108,3 +117,4 @@ class Mutation(
 ):
     register_user = RegisterUserMutation.Field()
     check_auth = CheckAuthMutation.Field()
+    sign_in = SignInMutation.Field()
