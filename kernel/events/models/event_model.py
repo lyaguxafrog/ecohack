@@ -7,6 +7,10 @@ from django.utils.translation import gettext_lazy as _
 class Events(models.Model):
     """
     Модель событий
+
+    * title: Заголовок события
+    * description: Описание события
+    * rating: Рейтинг события
     """
     title = models.CharField(
         verbose_name=_("Заголовок"),
@@ -18,6 +22,19 @@ class Events(models.Model):
     )
     rating = models.FloatField(
         verbose_name=_("Рейтинг"),
-        max_length=5.0
+        max_length=5.0,
+        null=True
+    )
+    date = models.DateTimeField(
+        verbose_name=_(""),
+        auto_now=True
+    )
+    longtitude = models.CharField(
+        verbose_name=_("Долгота"),
+        null=True
+    )
+    latitude = models.CharField(
+        verbose_name=_("Широта"),
+        null=True
     )
     # TODO: organizators and guests
