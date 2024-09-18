@@ -4,7 +4,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
   return (
     <section className="flex gap-4">
       <div className="mx-auto flex w-screen h-screen items-center">
-        <div className="w-6/7 h-full">
+        <div className="w-full h-full">
           <Image
             className="w-full h-screen object-cover"
             radius="none"
