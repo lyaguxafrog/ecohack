@@ -23,7 +23,8 @@ INSTALLED_APPS = [
 
     # APPS:
     'events',
-    'users'
+    'users',
+    'reviews'
 ]
 
 MIDDLEWARE = [
