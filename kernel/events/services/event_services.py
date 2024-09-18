@@ -3,6 +3,7 @@
 from typing import Optional
 
 from django.db.transaction import atomic
+from django.db.models import QuerySet
 
 from events.models import Events
 
@@ -75,3 +76,10 @@ def edit_event(
         return event
     except Exception as err:
         raise Exception(err)
+
+
+def get_events() -> QuerySet:
+    """
+    Функция для получения всех событий
+    """
+    return Events.objects.filter(is_archive=False).all()

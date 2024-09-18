@@ -38,4 +38,8 @@ class Events(models.Model):
         verbose_name=_("Широта"),
         null=True
     )
+    is_archive = models.BooleanField(
+        verbose_name=_("архивно ли событие"),
+        default=False
+    )
     # TODO: organizators and guests
