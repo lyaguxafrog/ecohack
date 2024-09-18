@@ -1,13 +1,42 @@
 # -*- coding: utf-8 -*-
 
 import os
-from typing import Optional
+from requests import request
 
-import requests
-from requests import Response, request
+from graphql_jwt.utils import jwt_payload, jwt_encode
 
 from django.conf import settings
 from django.core.cache import cache
+from django.contrib.auth.models import User
+
+from users.models import Profile
+
+
+def gen_jwt(
+    user: User
+) -> str:
+    """
+    Сервис генерации JWT токена
+
+    :param user: Пользователь
+
+    :returns: JWT токен
+    """
+
+    payload = jwt_payload(
+        user=user,
+        context={
+            'phone': user.username,
+            'role': Profile.objects.get(user=user).role
+        }
+    )
+
+    token = jwt_encode(
+        payload,
+        settings.SECRET_KEY
+    )
+
+    return token
 
 
 def send_request_to_login_bot(
