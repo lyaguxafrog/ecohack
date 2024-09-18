@@ -8,21 +8,15 @@ from django.utils.translation import gettext_lazy as _
 class Profile(models.Model):
     """
     * user: Пользователь auth.User
-    * phone: Номер телефона
     * avatar: Аватар пользователя
     * role: Роль пользователя
+    * date_of_birth: Дата рождения
     """
 
     user = models.ForeignKey(
         'auth.User',
         on_delete=models.CASCADE,
         verbose_name=_("Пользователь")
-    )
-
-    phone = models.CharField(
-        max_length=11,
-        verbose_name=_("Номер телефона пользователя"),
-        help_text=_("Номер телефона в формате 79998881010")
     )
 
     avatar = models.ImageField(
@@ -41,7 +35,11 @@ class Profile(models.Model):
         help_text=_("0 - пользователь, 1 - организатор, 2 - департамент")
     )
 
-    def username(self) -> str:
+    date_of_birth = models.DateField(
+        verbose_name=_("Дата рождения"),
+    )
+
+    def phone(self) -> str:
         return f'{self.user.username}'
 
     def first_name(self) -> str:
