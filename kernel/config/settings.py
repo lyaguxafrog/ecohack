@@ -22,8 +22,8 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # APPS:
+    'events'
     'users'
-
 ]
 
 MIDDLEWARE = [
