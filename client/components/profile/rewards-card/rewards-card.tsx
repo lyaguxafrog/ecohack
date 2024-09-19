@@ -9,7 +9,7 @@ export default function UserRewardsCard() {
         <h1 className="text-2xl font-bold">Твои награды</h1>
       </CardHeader>
       <CardBody className="space-y-6">
-        <div className="flex gap-5 items-end m-auto">
+        <div className="flex gap-1 items-end m-auto">
           <TreeComponent lvl={3} lvlValue={40} variant="exhibition" />
           <TreeComponent lvl={3} lvlValue={2} variant="concert" />
           <TreeComponent lvl={3} lvlValue={12} variant="competitions" />
