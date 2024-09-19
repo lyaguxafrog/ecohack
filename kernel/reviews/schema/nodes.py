@@ -18,6 +18,3 @@ class ReviewFilter(django_filters.FilterSet):
     class Meta:
         model = Reviews
         fields = []
-        orgering = [
-            'id'
-        ]
