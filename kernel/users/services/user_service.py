@@ -13,7 +13,7 @@ def create_user(
     phone: str,
     first_name: str,
     last_name: str,
-    date_of_birth: date,
+    # date_of_birth: date,
     role: int = 0,
 ) -> Profile:
     """
@@ -53,7 +53,7 @@ def create_user(
     profile = Profile.objects.create(
         user=user,
         role=role,
-        date_of_birth=date_of_birth
+        # date_of_birth=date_of_birth
     )
 
     return profile

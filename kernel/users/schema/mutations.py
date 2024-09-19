@@ -34,7 +34,7 @@ class RegisterUserMutation(relay.ClientIDMutation):
         date_of_birth = graphene.Date()
         first_name = graphene.String(required=True)
         last_name = graphene.String(required=True)
-        date_of_birth = graphene.Date(required=True)
+        date_of_birth = graphene.Date(required=False)
 
     @staticmethod
     def mutate_and_get_payload(
@@ -102,7 +102,7 @@ class CheckAuthMutation(relay.ClientIDMutation):
                     phone=input['phone'],
                     first_name=_reg.get('first_name'),
                     last_name=_reg.get('last_name'),
-                    date_of_birth=date.fromisoformat(_reg.get('date_of_birth'))
+                    # date_of_birth=date.fromisoformat(_reg.get('date_of_birth'))
                 )
                 cache.delete(f'register:{input['phone']}')
             else:
