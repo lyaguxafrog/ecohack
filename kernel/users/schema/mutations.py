@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-
 from datetime import date
 from typing import Optional, Any, Dict
 
 import graphene
 from graphene import ObjectType, relay
+
 import graphql_jwt
 from graphql_jwt.decorators import set_cookie
 
@@ -29,6 +29,9 @@ class RegisterUserMutation(relay.ClientIDMutation):
 
     class Input:
         phone = graphene.String(required=True)
+        first_name = graphene.String()
+        last_name = graphene.String()
+        date_of_birth = graphene.Date()
         first_name = graphene.String(required=True)
         last_name = graphene.String(required=True)
         date_of_birth = graphene.Date(required=True)
@@ -110,6 +113,7 @@ class CheckAuthMutation(relay.ClientIDMutation):
             print(profile.user)
             token = gen_jwt(profile.user)
             return CheckAuthMutation(profile=profile, token=token)
+
 
 
 class Mutation(

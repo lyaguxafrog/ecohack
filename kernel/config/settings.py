@@ -24,7 +24,9 @@ INSTALLED_APPS = [
 
     # APPS:
     'events',
-    'users'
+    'users',
+    'reviews'
+
 ]
 
 MIDDLEWARE = [
@@ -134,7 +136,6 @@ try:
     from .local_settings import *
 except ImportError:
     pass
-
 
 
 LOGIN_TIMEOUT = 180

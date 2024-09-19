@@ -4,8 +4,14 @@ import graphene
 from graphene import ObjectType, Schema
 
 from users.schema import Mutation as UserMutations
+from events.schema import Query as EventQueries
+from events.schema import Mutations as EventMutations
 
-class Query(ObjectType):
+
+class Query(
+    EventQueries,
+    ObjectType,
+):
     hello = graphene.String()
 
     def resolve_hello(root, info, **kwargs):
@@ -14,6 +20,7 @@ class Query(ObjectType):
 
 class Mutation(
     UserMutations,
+    EventMutations,
     ObjectType
 ):
     pass
