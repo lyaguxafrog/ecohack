@@ -218,3 +218,38 @@ export const SortIcon = (props: IconSvgProps) => (
     <path d="M3 6h18M6 12h12m-9 6h6" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth={2} />
   </svg>
 );
+
+export const PhoneIcon = (props: IconSvgProps) => (
+  <svg height="1em" viewBox="0 0 32 32" width="1em" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <path
+      d="M15 25h2M11 3h10a2 2 0 0 1 2 2v22a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+    />
+  </svg>
+);
+
+export const DateIcon = (props: IconSvgProps) => (
+  <svg height="1em" viewBox="0 0 16 16" width="1em" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <path
+      d="M14.5 16h-13C.67 16 0 15.33 0 14.5v-12C0 1.67.67 1 1.5 1h13c.83 0 1.5.67 1.5 1.5v12c0 .83-.67 1.5-1.5 1.5M1.5 2c-.28 0-.5.22-.5.5v12c0 .28.22.5.5.5h13c.28 0 .5-.22.5-.5v-12c0-.28-.22-.5-.5-.5z"
+      fill="currentColor"
+    />
+    <path
+      d="M4.5 4c-.28 0-.5-.22-.5-.5v-3c0-.28.22-.5.5-.5s.5.22.5.5v3c0 .28-.22.5-.5.5m7 0c-.28 0-.5-.22-.5-.5v-3c0-.28.22-.5.5-.5s.5.22.5.5v3c0 .28-.22.5-.5.5m4 2H.5C.22 6 0 5.78 0 5.5S.22 5 .5 5h15c.28 0 .5.22.5.5s-.22.5-.5.5"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+export const EmailIcon = (props: IconSvgProps) => (
+  <svg height="1em" viewBox="0 0 32 32" width="1em" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <path
+      d="M28 6H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2m-2.2 2L16 14.78 6.2 8ZM4 24V8.91l11.43 7.91a1 1 0 0 0 1.14 0L28 8.91V24Z"
+      fill="currentColor"
+    />
+  </svg>
+);
