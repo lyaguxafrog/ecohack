@@ -9,3 +9,12 @@ export interface ICard {
   img: string;
   title: string;
 }
+
+// SignIn
+export type SignInInput = {
+  phone: string;
+};
+
+export type SignInOutput = {
+  phoneToCall: string;
+};
