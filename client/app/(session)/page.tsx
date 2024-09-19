@@ -11,6 +11,7 @@ import { title } from '@/components/primitives';
 import { animals, eventsList } from '@/config/data';
 import { ICard } from '@/types';
 import { MOSCOW_COORDS } from '@/consts/consts';
+import { BackTimer } from '@/components/back-timer';
 
 export default function Home() {
   const Map = dynamic(() => import('../../components/map'), { ssr: false });
@@ -48,7 +49,7 @@ export default function Home() {
           <CardBody className="z-10">
             <div className="bg-transparent-white py-10 px-12 m-auto rounded-full flex flex-nowrpap gap-8 justify-center w-fit backdrop-blur">
               <div className="flex flex-col justify-center">
-                <span className="text-4xl font-extrabold">12 : 02 : 42</span>
+                <BackTimer time={new Date('2024-09-19T09:26:48.565Z')} />
               </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-bold">Выставка концептов «Вертикальный лес»</span>
