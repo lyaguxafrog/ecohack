@@ -1,43 +1,54 @@
-// import { createAsyncThunk } from '@reduxjs/toolkit';
-// import { GraphQLClient } from 'graphql-request';
+import { SignInInput, SignInOutput } from '@/types';
+import { endpoint } from '@/utils/api-uri';
+import { ApolloError, gql } from '@apollo/client';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { AppDispatch, State } from '.';
 
-// type ThunkConfig = {
-//   dispatch: AppDispatch;
-//   state: State;
-// };
+type ThunkConfig = {
+  dispatch: AppDispatch;
+  state: State;
+};
 
-// let headers = {
-//   Authorization: 'JWT undefined',
-// };
+let headers = {
+  Authorization: 'JWT undefined',
+};
 
-// function updateHeaders(jwtToken: string) {
-//   headers = {
-//     Authorization: `JWT ${jwtToken}`,
-//   };
-// }
-// const endpoint = new GraphQLClient('https://dev.passal.ru/api/');
+function updateHeaders(jwtToken: string) {
+  headers = {
+    Authorization: `JWT ${jwtToken}`,
+  };
+}
 
-// export const tokenAuth = createAsyncThunk<TokenAuthOutput, { tokenAuthInput: TokenAuthInput }, ThunkConfig>(
-//   'TOKEN_AUTH',
-//   async ({ tokenAuthInput }, { rejectWithValue }) => {
-//     try {
-//       const mutation = `
-//         mutation {
-//           tokenAuth(password: "${tokenAuthInput.password}", username: "${tokenAuthInput.username}") {
-//             token
-//           }
-//         }
-//       `;
-//       const data = await endpoint.request<TokenAuthOutput>(mutation);
+export const signIn = createAsyncThunk<SignInOutput, { signInInput: SignInInput }, ThunkConfig>(
+  'TOKEN_AUTH',
+  async ({ signInInput }, { rejectWithValue }) => {
+    try {
+      const result = await endpoint.mutate({
+        mutation: gql`
+				mutation signIn {
+					signIn(input: {
+							phone: "${signInInput.phone}"
+					}){
+						phoneToCall
+					} 
+				}
+			`,
+        variables: { signInInput },
+      });
 
-//       updateHeaders(data.token);
+      return result.data;
+    } catch (err) {
+      if (err instanceof ApolloError) {
+        return rejectWithValue({
+          message: err.message,
+          networkError: err.networkError,
+        });
+      }
 
-//       return data;
-//     } catch (err) {
-//       return rejectWithValue(err);
-//     }
-//   },
-// );
+      return rejectWithValue({ message: 'Unknown error occurred' });
+    }
+  },
+);
 
 // export const registerUser = createAsyncThunk<RegisterUserOutput, { registerUserInput: RegisterUserInput }, ThunkConfig>(
 //   'REGISTER_USER',

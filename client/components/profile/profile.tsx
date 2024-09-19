@@ -2,8 +2,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 'use client';
 import { useDisclosure } from '@nextui-org/modal';
-
 import { useState } from 'react';
+
 import CreateOrganize from './create-organize/create-organize';
 import UserRewardsCard from './rewards-card/rewards-card';
 import UserProfileCard from './user-card/user-card';
@@ -12,7 +12,7 @@ import UserParty from './user-party/user-party';
 export default function Profile() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  const [userCard, setUserCard] = useState<'Личные данные' | 'Награды'>('Награды');
+  const [userCard, setUserCard] = useState<'Личные данные' | 'Награды'>('Личные данные');
 
   return (
     <div className="flex gap-10 w-full">
