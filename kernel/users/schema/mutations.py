@@ -29,12 +29,12 @@ class RegisterUserMutation(relay.ClientIDMutation):
 
     class Input:
         phone = graphene.String(required=True)
-        first_name = graphene.String()
-        last_name = graphene.String()
-        date_of_birth = graphene.Date()
         first_name = graphene.String(required=True)
         last_name = graphene.String(required=True)
-        date_of_birth = graphene.Date(required=True)
+        date_of_birth = graphene.Date(requerid=True)
+        first_name = graphene.String(required=True)
+        last_name = graphene.String(required=True)
+        date_of_birth = graphene.Date(required=False)
 
     @staticmethod
     def mutate_and_get_payload(
