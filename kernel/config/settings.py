@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'utils',
     'events',
     'users',
-    'reviews',
+    # 'reviews',
     'party',
 
 ]
