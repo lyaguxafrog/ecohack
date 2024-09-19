@@ -1,17 +1,17 @@
 export const eventsList = [
   {
-    title: 'Orange',
+    title: 'Выставка концептов «Вертикальный лес»',
     img: 'https://www.autodesk.com/blogs/construction/wp-content/uploads/2020/10/1920x1080-blog_001.jpg',
     id: '1',
   },
   {
-    title: 'Tangerine',
-    img: 'https://www.autodesk.com/blogs/construction/wp-content/uploads/2020/10/1920x1080-blog_001.jpg',
+    title: 'Звучание птиц',
+    img: 'https://s14.stc.yc.kpcdn.net/share/i/4/2632562/wr-750.webp',
     id: '2',
   },
   {
-    title: 'Raspberry',
-    img: 'https://www.autodesk.com/blogs/construction/wp-content/uploads/2020/10/1920x1080-blog_001.jpg',
+    title: 'Раздельный сбор и переработка отходов',
+    img: 'https://avatars.dzeninfra.ru/get-zen_doc/230233/pub_5facf1e337752425247d7969_5facf2b80faffe6f3bac862d/scale_1200',
     id: '3',
   },
   {

@@ -29,7 +29,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html suppressHydrationWarning lang="en">
       <head />
-      <body className={clsx('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
+      <body
+        className={clsx(
+          'min-h-screen bg-background font-sans antialiased scrollbar-thumb-gray-200 scrollbar-track-white scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full',
+          fontSans.variable,
+        )}
+      >
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'light' }}>{children}</Providers>
       </body>
     </html>

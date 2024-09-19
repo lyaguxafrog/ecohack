@@ -9,12 +9,13 @@ import { CardCategoryRow } from '@/components/card-category-row';
 import { SearchIcon } from '@/components/icons';
 import { title } from '@/components/primitives';
 import { animals, eventsList } from '@/config/data';
-import { ICard } from '@/types';
+import { ICard, IEvent, useAppSelector } from '@/types';
 import { MOSCOW_COORDS } from '@/consts/consts';
 import { BackTimer } from '@/components/back-timer';
 
 export default function Home() {
   const Map = dynamic(() => import('../../components/map'), { ssr: false });
+  const events = useAppSelector((state) => state.DATA_STATE.events);
 
   return (
     <section className="flex flex-col items-center justify-center gap-4 pt-8 pb-12">
@@ -49,7 +50,7 @@ export default function Home() {
           <CardBody className="z-10">
             <div className="bg-transparent-white py-10 px-12 m-auto rounded-full flex flex-nowrpap gap-8 justify-center w-fit backdrop-blur">
               <div className="flex flex-col justify-center">
-                <BackTimer time={new Date('2024-09-19T09:26:48.565Z')} />
+                <BackTimer time={new Date('2024-09-19T17:00:48.565Z')} />
               </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-bold">Выставка концептов «Вертикальный лес»</span>
@@ -61,7 +62,7 @@ export default function Home() {
       </div>
 
       <div className="mt-8 w-full">
-        <CardCategoryRow content={eventsList as ICard[]} title="Живое творчество с наставниками" />
+        {/* <CardCategoryRow content={events} title="Живое творчество с наставниками" /> */}
         <CardCategoryRow className="mt-6" content={eventsList as ICard[]} title="Живое творчество с наставниками" />
       </div>
 
