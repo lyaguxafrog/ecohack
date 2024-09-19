@@ -1,5 +1,4 @@
 import { MapContainer, Marker, Popup, TileLayer, Tooltip } from 'react-leaflet';
-import { MapMarker } from './icons';
 import { icon } from 'leaflet';
 
 type TPoint = [number, number];
@@ -9,16 +8,17 @@ interface IMapProps {
   popupElement?: JSX.Element;
   tooltipElement?: JSX.Element;
   zoom?: number;
+  className?: string;
 }
-export const Map = ({ points, center, popupElement, tooltipElement, zoom = 13 }: IMapProps) => {
+export const Map = ({ points, center, popupElement, tooltipElement, zoom = 13, className }: IMapProps) => {
   return (
-    <>
+    <div className={`h-96 ${className}`}>
       <style
         dangerouslySetInnerHTML={{
           __html: `@import url('https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');`,
         }}
       />
-      <MapContainer center={center} className="h-screen" zoom={zoom}>
+      <MapContainer center={center} className="h-full" zoom={zoom}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {points.map((point) => (
           <Marker
@@ -31,6 +31,6 @@ export const Map = ({ points, center, popupElement, tooltipElement, zoom = 13 }:
           </Marker>
         ))}
       </MapContainer>
-    </>
+    </div>
   );
 };
