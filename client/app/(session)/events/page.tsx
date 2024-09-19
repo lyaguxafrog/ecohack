@@ -8,16 +8,17 @@ import { useState } from 'react';
 import EventCard from '@/components/card';
 import { SearchIcon, SortIcon } from '@/components/icons';
 import { categories, eventsList } from '@/config/data';
-import { Map } from '@/components/map';
+
+const PER_PAGE_VARIANTS = [6, 12, 32];
 
 export default function EventsPage() {
   const [isPopularPressed, setIsPopularPressed] = useState<boolean>(false);
   const [isNewPressed, setIsNewPressed] = useState<boolean>(false);
 
   return (
-    <section className="w-full">
-      <div className="mb-20">
-        <div className="flex justify-between gap-5">
+    <section className="w-full flex flex-col justify-between items-center">
+      <div className="mb-5 w-full">
+        <div className="flex gap-5">
           <div className="w-1/2">
             <Input
               aria-label="Search"
@@ -31,13 +32,7 @@ export default function EventsPage() {
               startContent={<SearchIcon className="text-base text-default-400 pointer-events-none" />}
               type="search"
             />
-            <Select
-              className="max-w-xs"
-              label="Категории"
-              placeholder="Выбрать категорию"
-              selectionMode="multiple"
-              size="sm"
-            >
+            <Select className="max-w-xs" placeholder="Выбрать категорию" selectionMode="multiple" size="md">
               {categories.map((category) => (
                 <SelectItem key={category.key}>{category.label}</SelectItem>
               ))}
@@ -45,27 +40,30 @@ export default function EventsPage() {
           </div>
           <div className="flex gap-5 flex-nowrap">
             <Button
-              endContent={
+              className="text-sm"
+              radius="full"
+              startContent={
                 isPopularPressed ? (
-                  <SortIcon className="rotate-180 transition-all" height={20} width={50} />
+                  <SortIcon className="rotate-180 transition-all" height={12} width={18} />
                 ) : (
-                  <SortIcon className="transition-all" height={20} width={50} />
+                  <SortIcon className="transition-all" height={12} width={18} />
                 )
               }
-              radius="full"
+              variant="light"
               onClick={() => setIsPopularPressed(!isPopularPressed)}
             >
               По популярности
             </Button>
             <Button
-              endContent={
+              radius="full"
+              startContent={
                 isNewPressed ? (
-                  <SortIcon className="rotate-180 transition-all" height={20} width={50} />
+                  <SortIcon className="rotate-180 transition-all" height={12} width={18} />
                 ) : (
-                  <SortIcon className="transition-all" height={20} width={50} />
+                  <SortIcon className="transition-all" height={12} width={18} />
                 )
               }
-              radius="full"
+              variant="light"
               onClick={() => setIsNewPressed(!isNewPressed)}
             >
               По новизне
@@ -73,16 +71,19 @@ export default function EventsPage() {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap gap-5">
+      <div className="flex flex-wrap p-4 pt-0 gap-3 h-[calc(100vh-268px-124px+20px)] w-[calc(100%+32px)] overflow-auto scrollbar-thumb-gray-200 scrollbar-track-white scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
         {eventsList.map((event) => (
-          <EventCard key={event.id} {...event} />
+          <EventCard key={event.id} {...event} className="h-64 w-[399px]" radius="sm" />
         ))}
       </div>
-      <div className="mt-5 float-end flex items-center gap-5">
-        <Button>Показать еще</Button>
+      <div className="mt-[10px] ml-auto float-end flex items-center gap-5">
+        <Select className="w-20" defaultSelectedKeys={[PER_PAGE_VARIANTS[0].toString()]} selectorIcon={<></>} size="sm">
+          {PER_PAGE_VARIANTS.map((perPage) => (
+            <SelectItem key={perPage}>{perPage.toString()}</SelectItem>
+          ))}
+        </Select>
         <Pagination isCompact showControls initialPage={1} total={10} />
       </div>
-      <Map center={[51.51, -0.12]} points={[[51.51, -0.09]]} />
     </section>
   );
 }

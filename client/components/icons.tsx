@@ -214,8 +214,14 @@ export const GroupIcon = (props: IconSvgProps) => (
 );
 
 export const SortIcon = (props: IconSvgProps) => (
-  <svg height="1em" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <path d="M3 6h18M6 12h12m-9 6h6" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth={2} />
+  <svg fill="none" height={12} width={18} {...props}>
+    <path
+      d="M1.5 1h15m-15 5h10m-10 5h4"
+      stroke="#5F5F5F"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+    />
   </svg>
 );
 
