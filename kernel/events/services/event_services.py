@@ -116,7 +116,7 @@ def get_events() -> QuerySet:
 def register_to_event(
     user: User,
     event: Events
-) -> bool:
+) -> Events:
     """
     Сервис регистрации на ивент
 
@@ -131,6 +131,6 @@ def register_to_event(
         event.guests.add(user)
         event.save()
 
-        return True
+        return event
     except Exception as err:
         raise Exception(err)
