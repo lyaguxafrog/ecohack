@@ -13,20 +13,20 @@ import { Map } from '@/components/map';
 
 export default function Home() {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <div className="inline-block max-w-xl text-center justify-center">
-        <h1 className={title()}>
-          Иногда лучше пойти, чем <span className="text-green-500">забить</span>
+    <section className="flex flex-col items-center justify-center gap-4 pt-8 pb-12">
+      <div className="inline-block max-w-3xl text-center justify-center">
+        <h1 className={`${title()}`}>
+          <span className="text-green-500">Сохраните Землю</span>, она единственная, что у нас есть
         </h1>
       </div>
 
-      <div className="flex gap-3 mt-8">
+      <div className="flex gap-3 mt-8 w-full">
         <Autocomplete
           disableSelectorIconRotation
-          className="min-w-96"
+          className="w-2/4 mx-auto"
           defaultItems={animals}
           labelPlacement="outside"
-          placeholder="Поиск"
+          placeholder="Поиск..."
           selectorIcon={<SearchIcon className="text-base text-default-400 pointer-events-none" />}
         >
           {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
@@ -43,7 +43,7 @@ export default function Home() {
             width="100%"
           />
           <CardBody className="z-10">
-            <div className="bg-transparent-white dark:bg-transparent-black py-10 px-12 m-auto rounded-full flex flex-nowrpap gap-8 justify-center w-fit backdrop-blur">
+            <div className="bg-transparent-white py-10 px-12 m-auto rounded-full flex flex-nowrpap gap-8 justify-center w-fit backdrop-blur">
               <div className="flex flex-col justify-center">
                 <span className="text-4xl font-extrabold">12 : 02 : 42</span>
               </div>
@@ -62,7 +62,7 @@ export default function Home() {
       </div>
 
       <div className="mt-8 w-full">
-        <Map center={[51.51, -0.12]} points={[[51.51, -0.09]]} />
+        <Map center={[55.755853, 37.6177]} className="w-[1184px] mx-auto" points={[[55.755853, 37.6177]]} zoom={13} />
       </div>
     </section>
   );

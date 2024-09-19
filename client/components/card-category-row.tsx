@@ -34,9 +34,9 @@ export const CardCategoryRow = ({ title, content, className }: ICardCategoryRowP
   };
 
   return (
-    <div className={'flex flex-col gap-3 ' + className ?? ''}>
-      <span className="text-lg font-semibold ml-6">{title}</span>
-      <div className="flex flex-nowrpap">
+    <div className={'flex flex-col ' + className ?? ''}>
+      <span className="text-xl font-bold ml-6">{title}</span>
+      <div className="flex flex-nowrpap bg-none">
         <button
           ref={buttonPrevElement}
           className="slider-controls-button slider-controls--prev"
@@ -45,16 +45,15 @@ export const CardCategoryRow = ({ title, content, className }: ICardCategoryRowP
           <NavArrowLeft />
         </button>
         <Swiper
-          className=""
           modules={[Navigation]}
           navigation={{
             prevEl: buttonPrevElement.current,
             nextEl: buttonNextElement.current,
             disabledClass: 'invisible',
           }}
-          spaceBetween={16}
           slidesPerView={CARDS_PER_PAGE}
-          wrapperClass=""
+          spaceBetween={14}
+          wrapperClass="py-5"
           onSwiper={(swiper) => setSwiperInstance(swiper)}
         >
           {content.map((item) => (
