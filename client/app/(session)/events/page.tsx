@@ -71,9 +71,9 @@ export default function EventsPage() {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap p-4 pt-0 gap-3 h-[calc(100vh-268px-124px+20px)] w-[calc(100%+32px)] overflow-auto scrollbar-thumb-gray-200 scrollbar-track-white scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
+      <div className="flex flex-wrap p-4 pt-0 gap-3 h-[calc(100vh-268px-60px+20px)] w-[calc(100%+32px)] overflow-auto scrollbar-thumb-gray-200 scrollbar-track-white scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
         {eventsList.map((event) => (
-          <EventCard key={event.id} {...event} className="h-64 w-[399px]" radius="sm" />
+          <EventCard key={event.id} {...event} className="h-64 w-[395px]" radius="sm" />
         ))}
       </div>
       <div className="mt-[10px] ml-auto float-end flex items-center gap-5">
