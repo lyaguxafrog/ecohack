@@ -62,3 +62,28 @@ def delete_my_party(
     party.delete()
 
     return True
+
+
+@atomic
+def invite_to_party(
+    user: User,
+    invite_code: str
+) -> Party:
+    """
+    Сервис приглашения в пати
+
+    :param user: Пользователь, который намерен вступить в пати
+    :param invite_code: Код приглашения
+
+    :returns: Пати
+    """
+
+    if not Party.objects.filter(invite_code=invite_code).exists():
+        raise ValueError("Party does not exists")
+
+    party = Party.objects.get(invite_code=invite_code)
+    party.soopartyes.add(user)
+
+    party.save()
+
+    return party
