@@ -7,6 +7,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         <div className="w-full h-full">
           <Image
             className="w-full h-screen object-cover"
+            draggable={false}
             radius="none"
             src="https://www.autodesk.com/blogs/construction/wp-content/uploads/2020/10/1920x1080-blog_001.jpg"
           />

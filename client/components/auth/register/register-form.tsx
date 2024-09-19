@@ -9,7 +9,7 @@ export default function RegisterForm() {
     <div className="w-[60%] px-32">
       <h1 className="font-bold text-2xl mb-5">Регистрация</h1>
       <div className="flex flex-col justify-center items-center self-center gap-y-5">
-        <div className="flex gap-2">
+        <div className="flex gap-2 w-full">
           <Input label="Имя" placeholder="Иван" size="sm" />
           <Input label="Фамилия" placeholder="Иванов" size="sm" />
         </div>
