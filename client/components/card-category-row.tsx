@@ -4,8 +4,8 @@ import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperType } from 'swiper/types';
 
-import { NavArrowLeft, NavArrowRight } from './icons';
 import EventCard from './card';
+import { NavArrowLeft, NavArrowRight } from './icons';
 
 import { ICard } from '@/types';
 
@@ -52,8 +52,9 @@ export const CardCategoryRow = ({ title, content, className }: ICardCategoryRowP
             nextEl: buttonNextElement.current,
             disabledClass: 'invisible',
           }}
+          spaceBetween={16}
           slidesPerView={CARDS_PER_PAGE}
-          wrapperClass="flex gap-3"
+          wrapperClass=""
           onSwiper={(swiper) => setSwiperInstance(swiper)}
         >
           {content.map((item) => (

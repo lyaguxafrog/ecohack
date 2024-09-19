@@ -3,7 +3,7 @@
 from datetime import date
 
 from django.db.transaction import atomic
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 
 from users.models import Profile
 
@@ -30,13 +30,23 @@ def create_user(
 
     user = User.objects.create(
         username=phone,
-        # TODO: Сделать пермишн на определенные действия
-        #    user_permissions=
         first_name=first_name,
         last_name=last_name
     )
 
-    if role > 0:
+    if role == 0:
+        user.is_staff = False
+        user.save()
+
+    if role == 1:
+        add_events = Permission.objects.get(codename="add_events")
+        edit_events = Permission.objects.get(codename="change_events")
+        delete_events = Permission.objects.get(codename="delete_events")
+        user.user_permissions.add(add_events)
+        user.user_permissions.add(edit_events)
+        user.user_permissions.add(delete_events)
+
+    if role == 2:
         user.is_staff = True
         user.save()
 

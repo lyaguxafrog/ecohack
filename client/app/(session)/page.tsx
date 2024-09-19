@@ -62,11 +62,6 @@ export default function Home() {
       </div>
 
       <div className="mt-8 w-full">
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `@import url('https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');`,
-          }}
-        />
         <Map center={[51.51, -0.12]} points={[[51.51, -0.09]]} />
       </div>
     </section>

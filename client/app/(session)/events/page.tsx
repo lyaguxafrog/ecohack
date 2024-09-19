@@ -8,6 +8,7 @@ import { useState } from 'react';
 import EventCard from '@/components/card';
 import { SearchIcon, SortIcon } from '@/components/icons';
 import { categories, eventsList } from '@/config/data';
+import { Map } from '@/components/map';
 
 export default function EventsPage() {
   const [isPopularPressed, setIsPopularPressed] = useState<boolean>(false);
@@ -81,6 +82,7 @@ export default function EventsPage() {
         <Button>Показать еще</Button>
         <Pagination isCompact showControls initialPage={1} total={10} />
       </div>
+      <Map center={[51.51, -0.12]} points={[[51.51, -0.09]]} />
     </section>
   );
 }
