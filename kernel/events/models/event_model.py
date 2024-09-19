@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
 
@@ -41,4 +42,13 @@ class Events(models.Model):
         verbose_name=_("архивно ли событие"),
         default=False
     )
-    # TODO: organizators and guests
+    organizer = models.ForeignKey(
+        verbose_name='Организатор события',
+        to=User
+    )
+    guests = models.ManyToManyField(
+        verbose_name='Гости на событии',
+        to=User,
+        null=True,
+        blank=True
+    )

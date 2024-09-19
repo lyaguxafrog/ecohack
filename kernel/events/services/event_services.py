@@ -6,6 +6,7 @@ from datetime import datetime
 from django.db.transaction import atomic
 from django.db.models import QuerySet
 from django.core.cache import cache
+from django.contrib.auth.models import User
 
 from events.models import Events
 
@@ -13,6 +14,7 @@ from events.models import Events
 @atomic
 def create_event(
     title: str,
+    organizer: User,
     date: Optional[datetime] = None,
     description: Optional[str] = None,
     longtitude: Optional[str] = None,
@@ -34,7 +36,8 @@ def create_event(
             description=description,
             longtitude=longtitude,
             latitude=latitude,
-            date=date
+            date=date,
+            organizer=organizer
         )
     except Exception as err:
         raise Exception(err)
@@ -49,7 +52,7 @@ def delete_event(
     """
     Сервис для удаления события
 
-    :param event: Объект события
+    :param event_id: id в бд объекта события
     """
 
     try:

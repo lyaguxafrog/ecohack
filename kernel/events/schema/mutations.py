@@ -2,6 +2,7 @@
 
 from typing import Dict, Any
 
+from graphql_jwt.decorators import login_required, permission_required
 import graphene
 from graphene import ObjectType, relay
 
@@ -20,6 +21,8 @@ class CreateEventsMutation(relay.ClientIDMutation):
         date = graphene.DateTime(required=False)
 
     @staticmethod
+    @login_required
+    @permission_required(perm="auth.add_events")
     def mutate_and_get_payload(
         root: Any,
         info: graphene.ResolveInfo,
@@ -31,7 +34,8 @@ class CreateEventsMutation(relay.ClientIDMutation):
                 date=input['date'],
                 description=input['description'],
                 longtitude=input['longtitude'],
-                latitude=input['latitude']
+                latitude=input['latitude'],
+                organizer=info.context.user
             )
 
         except Exception as err:
@@ -51,6 +55,9 @@ class EditEventMutation(relay.ClientIDMutation):
         latitude = graphene.String(required=False)
         date = graphene.DateTime(required=False)
 
+    @classmethod
+    @login_required
+    @permission_required(perm="auth.edit_events")
     def mutate_and_get_payload(
         root: Any,
         info: graphene.ResolveInfo,
@@ -79,6 +86,9 @@ class DeleteEventMutation(relay.ClientIDMutation):
     class Input:
         event_id = graphene.ID()
 
+    @classmethod
+    @login_required
+    @permission_required(perm="auth.delete_events")
     def mutate_and_get_payload(
         root: Any,
         info: graphene.ResolveInfo,
