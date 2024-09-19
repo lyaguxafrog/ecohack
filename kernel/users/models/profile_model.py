@@ -37,6 +37,7 @@ class Profile(models.Model):
 
     date_of_birth = models.DateField(
         verbose_name=_("Дата рождения"),
+        null=True, blank=True
     )
 
     def phone(self) -> str:
