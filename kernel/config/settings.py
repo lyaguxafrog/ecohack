@@ -20,12 +20,12 @@ INSTALLED_APPS = [
     # LIBS:
     'graphene_django',
     'corsheaders',
-    ''
 
     # APPS:
     'events',
     'users',
-    'reviews'
+    'reviews',
+    'party',
 
 ]
 
