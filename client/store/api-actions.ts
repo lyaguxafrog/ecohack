@@ -1,8 +1,17 @@
-import { SignInInput, SignInOutput } from '@/types';
-import { endpoint } from '@/utils/api-uri';
 import { ApolloError, gql } from '@apollo/client';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AppDispatch, State } from '.';
+
+import {
+  AppDispatch,
+  checkAuthInput,
+  checkAuthOutput,
+  RegisterInput,
+  RegisterOutput,
+  SignInInput,
+  SignInOutput,
+  State,
+} from '@/types';
+import { endpoint } from '@/utils/api-uri';
 
 type ThunkConfig = {
   dispatch: AppDispatch;
@@ -25,7 +34,7 @@ export const signIn = createAsyncThunk<SignInOutput, { signInInput: SignInInput 
     try {
       const result = await endpoint.mutate({
         mutation: gql`
-				mutation signIn {
+				mutation SignIn {
 					signIn(input: {
 							phone: "${signInInput.phone}"
 					}){
@@ -50,32 +59,78 @@ export const signIn = createAsyncThunk<SignInOutput, { signInInput: SignInInput 
   },
 );
 
-// export const registerUser = createAsyncThunk<RegisterUserOutput, { registerUserInput: RegisterUserInput }, ThunkConfig>(
-//   'REGISTER_USER',
-//   async ({ registerUserInput }, { rejectWithValue }) => {
-//     try {
-//       const mutation = `
-//         mutation {
-//           registerUser(input: {
-//             username: "${registerUserInput.username}",
-//             email: "${registerUserInput.email}",
-//             password: "${registerUserInput.password}",
-//             repeatPassword: "${registerUserInput.repeatPassword}"
-//           }) {
-//             token
-//           }
-//         }
-//       `;
-//       const data = await endpoint.request<RegisterUserOutput>(mutation);
+export const registerUser = createAsyncThunk<RegisterOutput, { registerUserInput: RegisterInput }, ThunkConfig>(
+  'REGISTER_USER',
+  async ({ registerUserInput }, { rejectWithValue }) => {
+    try {
+      const result = await endpoint.mutate({
+        mutation: gql`
+				mutation RegisterUser {
+					registerUser(input: {
+							phone: "${registerUserInput.phone}",
+							firstName: "${registerUserInput.firstName}",
+              lastName: "${registerUserInput.lastName}",
+					}){
+						phoneToCall
+					} 
+				}
+			`,
+        variables: { registerUserInput },
+      });
 
-//       updateHeaders(data.token);
+      updateHeaders(result.data.token);
 
-//       return data;
-//     } catch (err) {
-//       return rejectWithValue(err);
-//     }
-//   },
-// );
+      return result.data;
+    } catch (err) {
+      if (err instanceof ApolloError) {
+        return rejectWithValue({
+          message: err.message,
+          networkError: err.networkError,
+        });
+      }
+
+      return rejectWithValue({ message: 'Unknown error occurred' });
+    }
+  },
+);
+
+export const checkAuth = createAsyncThunk<checkAuthOutput, { registerUserInput: checkAuthInput }, ThunkConfig>(
+  'CHECK_AUTH',
+  async ({ registerUserInput }, { rejectWithValue }) => {
+    try {
+      const result = await endpoint.mutate({
+        mutation: gql`
+				mutation CheckAuth {
+					checkAuth(input: {
+							phone: "${registerUserInput.phone}",
+					}){
+						token
+            profile {
+              id
+              firstName
+              lastName
+              phone
+              role
+            }
+					} 
+				}
+			`,
+        variables: { registerUserInput },
+      });
+
+      return result.data;
+    } catch (err) {
+      if (err instanceof ApolloError) {
+        return rejectWithValue({
+          message: err.message,
+          networkError: err.networkError,
+        });
+      }
+
+      return rejectWithValue({ message: 'Unknown error occurred' });
+    }
+  },
+);
 
 // export const passwords = createAsyncThunk<Passwords, void>('PASSWORDS', async (_, { rejectWithValue }) => {
 //   try {
