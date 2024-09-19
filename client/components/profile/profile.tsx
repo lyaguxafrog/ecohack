@@ -1,9 +1,14 @@
+'use client';
 import { Button } from '@nextui-org/button';
+import { useDisclosure } from '@nextui-org/modal';
 
+import CreateOrganize from './create-organize/create-organize';
 import UserProfileCard from './user-card/user-card';
 import UserParty from './user-party/user-party';
 
 export default function Profile() {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   return (
     <div className="flex gap-10 w-full">
       <div className="w-1/3">
@@ -15,11 +20,17 @@ export default function Profile() {
           <Button className="border-green-500" variant="ghost">
             Личные данные
           </Button>
-          <Button className="bg-red-600 text-white">Выйти</Button>
+          <Button className="border-none" variant="ghost" onPress={onOpen}>
+            Создать Организатора
+          </Button>
+          <Button color="danger" variant="light">
+            Выйти
+          </Button>
         </div>
       </div>
       <UserProfileCard />
       <UserParty />
+      <CreateOrganize isOpen={isOpen} onOpenChange={onOpenChange} />
     </div>
   );
 }

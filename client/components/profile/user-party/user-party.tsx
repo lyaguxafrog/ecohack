@@ -17,7 +17,7 @@ export default function UserParty() {
     },
     {
       id: '4',
-      name: 'John',
+      name: 'John Doe',
     },
   ];
 
@@ -32,7 +32,7 @@ export default function UserParty() {
       <CardBody>
         {data.map((item) => (
           <ul key={item.id}>
-            <li className="flex items-center gap-5 mt-5">
+            <li className="flex items-center gap-2 mt-2">
               <Avatar size="sm" />
               <p>{item.name}</p>
             </li>
