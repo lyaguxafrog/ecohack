@@ -31,7 +31,7 @@ class RegisterUserMutation(relay.ClientIDMutation):
         phone = graphene.String(required=True)
         first_name = graphene.String(required=True)
         last_name = graphene.String(required=True)
-        date_of_birth = graphene.Date(required=False)
+        # date_of_birth = graphene.Date(required=False)
 
     @staticmethod
     def mutate_and_get_payload(
@@ -50,7 +50,7 @@ class RegisterUserMutation(relay.ClientIDMutation):
                 'phone': input['phone'],
                 'first_name': input['first_name'],
                 'last_name': input['last_name'],
-                'date_of_birth': str(input['date_of_birth'])
+                # 'date_of_birth': str(input['date_of_birth'])
             },
             timeout=300
         )
