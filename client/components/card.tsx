@@ -10,10 +10,11 @@ interface IEventCardProps {
   img: string;
   title: string;
   className?: string;
+  radius?: 'sm' | 'md' | 'lg' | 'none';
 }
-export default function EventCard({ img, title, className }: IEventCardProps) {
+export default function EventCard({ img, title, className, radius }: IEventCardProps) {
   return (
-    <Card isFooterBlurred isPressable className={`justify-center h-80 items-center hover:-translate-y-1 ${className}`}>
+    <Card isFooterBlurred isPressable className={`z-30 justify-center h-80 items-center ${className}`} radius={radius}>
       <Image className="z-0 min-h-96 min-w-full object-cover" draggable={false} src={img} />
       <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600">
         <div className="flex flex-grow gap-2 items-center">

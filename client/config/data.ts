@@ -34,6 +34,21 @@ export const eventsList = [
     img: 'https://www.autodesk.com/blogs/construction/wp-content/uploads/2020/10/1920x1080-blog_001.jpg',
     id: '7',
   },
+  {
+    title: 'Lemon',
+    img: 'https://www.autodesk.com/blogs/construction/wp-content/uploads/2020/10/1920x1080-blog_001.jpg',
+    id: '8',
+  },
+  {
+    title: 'Lemon',
+    img: 'https://www.autodesk.com/blogs/construction/wp-content/uploads/2020/10/1920x1080-blog_001.jpg',
+    id: '9',
+  },
+  {
+    title: 'Tangerine',
+    img: 'https://www.autodesk.com/blogs/construction/wp-content/uploads/2020/10/1920x1080-blog_001.jpg',
+    id: '10',
+  },
 ];
 
 export const categories = [

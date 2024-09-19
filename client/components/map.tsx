@@ -10,7 +10,7 @@ interface IMapProps {
   zoom?: number;
   className?: string;
 }
-export const Map = ({ points, center, popupElement, tooltipElement, zoom = 13, className }: IMapProps) => {
+const Map = ({ points, center, popupElement, tooltipElement, zoom = 13, className }: IMapProps) => {
   return (
     <div className={`h-96 ${className}`}>
       <style
@@ -34,3 +34,5 @@ export const Map = ({ points, center, popupElement, tooltipElement, zoom = 13, c
     </div>
   );
 };
+
+export default Map;
