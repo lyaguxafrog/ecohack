@@ -25,7 +25,7 @@
 		"@nextui-org/navbar": "2.0.36",
 		"@nextui-org/pagination": "^2.0.36",
 		"@nextui-org/select": "^2.2.7",
-		"@nextui-org/snippet": "2.0.41",
+		"@nextui-org/snippet": "^2.0.41",
 		"@nextui-org/switch": "2.0.33",
 		"@nextui-org/system": "2.2.5",
 		"@nextui-org/theme": "2.2.9",

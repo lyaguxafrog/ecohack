@@ -1,5 +1,6 @@
 import { Avatar } from '@nextui-org/avatar';
-import { Card, CardBody, CardHeader } from '@nextui-org/card';
+import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card';
+import { Snippet } from '@nextui-org/snippet';
 
 export default function UserParty() {
   const data = [
@@ -19,15 +20,34 @@ export default function UserParty() {
       id: '4',
       name: 'John Doe',
     },
+    {
+      id: '5',
+      name: 'Jane Doe',
+    },
+    {
+      id: '6',
+      name: 'Tom Doe',
+    },
+    {
+      id: '7',
+      name: 'Alice Doe',
+    },
+    {
+      id: '8',
+      name: 'Bob Doe',
+    },
+    {
+      id: '9',
+      name: 'Emily Doe',
+    },
   ];
 
   return (
-    <Card className="w-1/4">
-      <CardHeader className="-mb-5 flex flex-col">
-        <h1>
-          Ваша <span className="text-green-500">Эко Команда</span>
+    <Card className="w-1/4  max-h-[400px]">
+      <CardHeader className="flex flex-col">
+        <h1 className="text-medium">
+          Ваша <span className="text-green-500 font-semibold">Эко Команда</span>
         </h1>
-        <h1>Название эко команды</h1>
       </CardHeader>
       <CardBody>
         {data.map((item) => (
@@ -39,6 +59,11 @@ export default function UserParty() {
           </ul>
         ))}
       </CardBody>
+      <CardFooter className="py-5">
+        <Snippet size="sm" symbol="" variant="bordered">
+          https://ecopass.makridenko.ru/api/
+        </Snippet>
+      </CardFooter>
     </Card>
   );
 }
