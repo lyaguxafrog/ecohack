@@ -49,7 +49,7 @@ export default function UserParty() {
           Ваша <span className="text-green-500 font-semibold">Эко Команда</span>
         </h1>
       </CardHeader>
-      <CardBody>
+      <CardBody className="overflow-auto scrollbar-thumb-gray-200 scrollbar-track-white scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
         {data.map((item) => (
           <ul key={item.id}>
             <li className="flex items-center gap-2 mt-2">
