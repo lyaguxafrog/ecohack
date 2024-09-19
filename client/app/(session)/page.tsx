@@ -10,6 +10,7 @@ import { SearchIcon } from '@/components/icons';
 import { title } from '@/components/primitives';
 import { animals, eventsList } from '@/config/data';
 import { ICard } from '@/types';
+import { MOSCOW_COORDS } from '@/consts/consts';
 
 export default function Home() {
   const Map = dynamic(() => import('../../components/map'), { ssr: false });
@@ -64,7 +65,11 @@ export default function Home() {
       </div>
 
       <div className="mt-8 w-full">
-        <Map center={[55.755853, 37.6177]} className="w-[1184px] mx-auto" points={[[55.755853, 37.6177]]} zoom={13} />
+        <Map
+          center={[MOSCOW_COORDS.lat, MOSCOW_COORDS.lng]}
+          className="w-[1184px] mx-auto"
+          points={[[55.755853, 37.6177]]}
+        />
       </div>
     </section>
   );
