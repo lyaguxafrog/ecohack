@@ -35,19 +35,22 @@ class Profile(models.Model):
         help_text=_("0 - пользователь, 1 - организатор, 2 - департамент")
     )
 
-    date_of_birth = models.DateField(
-        verbose_name=_("Дата рождения"),
-        null=True, blank=True
-    )
+    # date_of_birth = models.DateField(
+    #     verbose_name=_("Дата рождения"),
+    # )
 
+    @property
     def phone(self) -> str:
-        return f'{self.user.username}'
+        return self.user.username
 
+    @property
     def first_name(self) -> str:
-        return f'{self.user.first_name}'
+        return self.user.first_name.__str__()
 
+    @property
     def last_name(self) -> str:
-        return f'{self.user.last_name}'
+        return self.user.last_name.__str__()
 
+    @property
     def email(self) -> str:
-        return f'{self.user.email}'
+        return self.user.email.__str__()

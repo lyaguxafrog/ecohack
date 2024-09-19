@@ -15,24 +15,24 @@ class RoleEnum(graphene.Enum):
 
 
 class ProfileNode(DjangoObjectType):
-    class Meta:
-        model = Profile
-        interfaces = [relay.Node,]
-        fields = [
-            'phone',
-            'email',
-            'first_name',
-            'last_name',
-            'role',
-            'date_of_birth'
-        ]
-
-        read_only_fields = [
-            'phone'
-        ]
-
     phone = graphene.String()
     email = graphene.String()
     first_name = graphene.String()
     last_name = graphene.String()
     role = graphene.Field(RoleEnum)
+
+    class Meta:
+        model = Profile
+        interfaces = [relay.Node,]
+        # fields = [
+        #     'phone',
+        #     'email',
+        #     'first_name',
+        #     'last_name',
+        #     'role',
+        #     # 'date_of_birth'
+        # ]
+
+        # read_only_fields = [
+        #     'phone'
+        # ]
