@@ -7,7 +7,7 @@ import { Swiper as SwiperType } from 'swiper/types';
 import EventCard from './card';
 import { NavArrowLeft, NavArrowRight } from './icons';
 
-import { ICard } from '@/types';
+import { ICard, IEvent } from '@/types';
 
 interface ICardCategoryRowProps {
   title: string;
@@ -58,7 +58,7 @@ export const CardCategoryRow = ({ title, content, className }: ICardCategoryRowP
         >
           {content.map((item) => (
             <SwiperSlide key={item.id} className="w-full">
-              <EventCard {...item} />
+              <EventCard title={item.title} img={item.img} />
             </SwiperSlide>
           ))}
         </Swiper>

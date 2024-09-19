@@ -77,12 +77,7 @@ export default function EventsPage() {
         ))}
       </div>
       <div className="mt-[10px] ml-auto float-end flex items-center gap-5">
-        <Select className="w-20" defaultSelectedKeys={[PER_PAGE_VARIANTS[0].toString()]} selectorIcon={<></>} size="sm">
-          {PER_PAGE_VARIANTS.map((perPage) => (
-            <SelectItem key={perPage}>{perPage.toString()}</SelectItem>
-          ))}
-        </Select>
-        <Pagination isCompact showControls initialPage={1} total={10} />
+        <Pagination isCompact showControls className="mb-3" initialPage={1} total={10} />
       </div>
     </section>
   );
