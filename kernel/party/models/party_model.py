@@ -22,7 +22,8 @@ class Party(models.Model):
     invite_code = models.CharField(
         max_length=16,
         null=False, blank=False,
-        verbose_name=_("Код группы")
+        verbose_name=_("Код группы"),
+        unique=True
     )
 
     event = models.ForeignKey(

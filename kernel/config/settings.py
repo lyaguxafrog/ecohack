@@ -22,9 +22,10 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # APPS:
+    'utils',
     'events',
     'users',
-    'reviews',
+    # 'reviews',
     'party',
 
 ]

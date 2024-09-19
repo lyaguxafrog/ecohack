@@ -110,3 +110,27 @@ def get_events() -> QuerySet:
             timeout=1209600
         )
         return events
+
+
+@atomic
+def register_to_event(
+    user: User,
+    event: Events
+) -> Events:
+    """
+    Сервис регистрации на ивент
+
+
+    :param user: Пользователь
+    :param event: Ивент
+
+    :returns: Бул на успешность
+    """
+
+    try:
+        event.guests.add(user)
+        event.save()
+
+        return event
+    except Exception as err:
+        raise Exception(err)
