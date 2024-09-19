@@ -1,6 +1,7 @@
 # -*- coding: utf -*-
 
 from datetime import date
+from typing import Optional
 
 from django.db.transaction import atomic
 from django.contrib.auth.models import User, Permission
@@ -50,6 +51,10 @@ def create_user(
         user.is_staff = True
         user.save()
 
+    if not date_of_birth:
+        date_of_birth_ = None
+    else:
+        date_of_birth_ = date_of_birth
     profile = Profile.objects.create(
         user=user,
         role=role,
