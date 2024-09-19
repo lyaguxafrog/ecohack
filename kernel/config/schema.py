@@ -6,9 +6,11 @@ from graphene import ObjectType, Schema
 from users.schema import Mutation as UserMutations
 from events.schema import Query as EventQueries
 from events.schema import Mutations as EventMutations
+from reviews.schema import Query as ReviewsQuery
 
 
 class Query(
+    ReviewsQuery,
     EventQueries,
     ObjectType,
 ):
